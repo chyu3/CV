@@ -10,11 +10,11 @@ from utils import get_default_device, show_img, to_device
 from transforms import Transforms
 
 
-
+# prediction function
 def predict_image(target, img, transform=None):
-    xb, xb2 = transform(target).unsqueeze(0), transform(img).unsqueeze(0) # Convert to batch of 1
+    xb, xb2 = transform(target).unsqueeze(0), transform(img).unsqueeze(0) # Convert to batch of 1, xb = input batch, transform both images
     model.eval()
-    yb = model(xb.to(device), xb2.to(device))
+    yb = model(xb.to(device), xb2.to(device)) # output batch, predicted value
     return yb
 
 
